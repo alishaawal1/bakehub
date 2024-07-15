@@ -1,0 +1,42 @@
+.landing-container {
+    text-align: center;
+    background: url('/images/LandingPage.jpeg') no-repeat center center/cover; /* Replace with your background image path */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .top-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .top-left-content h1 {
+    margin: 0;
+    font-size: 48px;
+  }
+  
+  .top-left-content p {
+    font-size: 24px;
+  }
+  
+  .buttons .login-button,
+  .buttons .register-button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background-color: blue;
+    border-radius: 5px;
+  }
+  
+  .buttons .register-button {
+    background-color: green;
+  }
+  

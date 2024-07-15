@@ -1,0 +1,129 @@
+  /* LandingPage.css */
+  
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #262828; /* Grey background color */
+  }
+  
+  .top-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .top-left-content {
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: #ffffff; /* Text color */
+    flex: 1;
+    padding-right: 10px;
+    display: flex;
+    height: 100%;
+    width: 90%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+  }
+  
+  .top-right-content {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: white;
+    font-family: serif;
+    
+  }
+  
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-family: serif;
+    font-weight: bold;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .login-button,
+  .register-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .login-button {
+    background-color: #585c61; 
+  }
+  
+  .register-button {
+    background-color: #585c61;
+  }
+  
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit:fill;
+  }
+  
+  .about-us {
+    background-color: #fff; /* White background color for the about us section */
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items:baseline;
+    margin-top: 20px; 
+  }
+  .about-content {
+    display: flex;
+    flex-direction: row;
+    align-items:normal;
+  }
+  
+  
+  .about-left img {
+    max-width: 100%;
+    max-height: 90%;
+    object-fit: fill;
+  }
+
+  .about-right {
+    flex: 3;
+  }
+  
+  .about-right h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: serif;
+    font-weight: bold;
+  }
+  
+  .about-right p {
+    font-size: 1.2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+ 
+
+  
+ 
+  
+  
+ 
+  

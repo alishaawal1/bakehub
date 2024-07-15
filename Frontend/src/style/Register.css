@@ -1,0 +1,41 @@
+/* Register.css */
+
+.register-container {
+    background-image: url('/images/Register.jpg'); /* Adjust the path to your image */
+    background-size:auto;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* filter: blur(5px); */
+  }
+  
+  .register-form {
+
+    background-color: rgba(232, 232, 232, 0.8); /* Semi-transparent white background for the form */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional: Add a box shadow for a card-like effect */
+   
+  }
+  
+  .register-form input,
+  .register-form button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #262828;
+    border-radius: 4px;
+  }
+  
+  .register-form button {
+    background-color: #262828;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .register-form button:hover {
+    background-color: #3d5961;
+  }
+  
