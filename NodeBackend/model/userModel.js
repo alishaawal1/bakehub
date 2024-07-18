@@ -9,6 +9,17 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    phoneNumber: {
+        type: String,
+        required: true,
+        validate: {
+            validator: function(v) {
+                return /^\d{10}$/.test(v);
+            },
+            message: props => `${props.value} is not a valid phone number!`
+        }
+    },
+
     email:{
         type: String,
         required: true,

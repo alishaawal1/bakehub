@@ -7,10 +7,10 @@ const createUser = async (req, res) => {
     console.log(req.body);
 
     // step 2 : Destructure the data
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName,phoneNumber ,email, password } = req.body;
 
     // step 3 : validate the incomming data
-    if (!firstName || !lastName || !email || !password) {
+    if (!firstName || !lastName ||phoneNumber|| !email || !password) {
         return res.json({
             success: false,
             message: "Please fill all the fields."
@@ -37,6 +37,7 @@ const createUser = async (req, res) => {
             // fieldname : incomming data name
             firstName: firstName,
             lastName: lastName,
+            phoneNumber:phoneNumber,
             email: email,
             password: encryptedPassword,
         })

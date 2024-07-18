@@ -1,96 +1,85 @@
-import React from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import '../style/Navbar.css';
-import logo from '../images/Logo.png';
-import cartIcon from '../images/cart.png';
-import profileIcon from '../images/profile.png';
+import Logo from '../images/Logo.png';
 
 const Navbar = () => {
-  // get data of user form local storage
-  const user = JSON.parse(localStorage.getItem('user'));
+  const [showCategoriesDropdown, setShowCategoriesDropdown] = useState(false);
+  const user = JSON.parse(localStorage.getItem('user'))
+  const navigate = useNavigate()
 
-  // logout function
-  const navigate = useNavigate();
   const handleLogout = (e) => {
-    e.preventDefault();
-    localStorage.clear();
-    navigate('/login');
-  };
+    e.preventDefault()
+    localStorage.clear()
+    navigate('/login')
+  }
 
   return (
-    <>
-      <nav className="navbar navbar-expand-lg custom-navbar">
-        <div className="container-fluid">
-          <NavLink className="navbar-brand text-danger" to="/">
-            <img src={logo} alt="Logo" height="55" width="80" />
-          </NavLink>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <NavLink className="nav-link" aria-current="page" to="/" activeclassname="active">
-                  Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" aria-current="page" to="/categories">
-                  Categories
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" aria-current="page" to="/cakes">
-                  Cakes
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" aria-current="page" to="/contactus">
-                  Contact Us
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" aria-current="page" to="/aboutus">
-                  About Us
-                </NavLink>
-              </li>
+    <nav className="navbar custom-navbar">
+      <div className="navbar-content">
+        <NavLink className="navbar-brand" to="/home">
+          <img src={Logo} alt="Logo" />
+        </NavLink>
+        
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/home" activeclassname='active'>Home</NavLink>
+          </li>
+          <li className="nav-item dropdown"
+              onMouseEnter={() => setShowCategoriesDropdown(true)}
+              onMouseLeave={() => setShowCategoriesDropdown(false)}>
+            <NavLink className="nav-link" to="/categories">
+              Categories
+            </NavLink>
+            <ul className={`dropdown-menu ${showCategoriesDropdown ? 'show' : ''}`}>
+              
+              <li><Link className="dropdown-item" to="/categories/pastries">Pastries</Link></li>
+              <li><Link className="dropdown-item" to="/categories/donuts">Donuts</Link></li>
+              <li><Link className="dropdown-item" to="/categories/croissant">Croissant</Link></li>
+              <li><Link className="dropdown-item" to="/categories/bagel">Bagel</Link></li>
+              <li><Link className="dropdown-item" to="/categories/cookies">Cookies</Link></li>
+              
             </ul>
-            <div className="navbar-icons">
-              <img src={cartIcon} alt="Cart" />
-              <img src={profileIcon} alt="Profile" />
-            </div>
-            <form className="d-flex" role="search">
-              {user ? (
-                <div className="dropdown">
-                  <button className="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Welcome, {user.firstName}!
-                  </button>
-                  <ul className="dropdown-menu">
-                    <li><Link className="dropdown-item" to="/profile">Profile</Link></li>
-                    <li><Link className="dropdown-item" to="/passwordreset">Change password</Link></li>
-                    <li><button onClick={handleLogout} className="dropdown-item" to="/logout">Logout</button></li>
-                  </ul>
-                </div>
-              ) : (
-                <>
-                  <Link className="btn btn-outline-primary me-2" to="/login">Login</Link>
-                  <Link className="btn btn-outline-success" to="/register">Register</Link>
-                </>
-              )}
-            </form>
-          </div>
-        </div>
-      </nav>
-    </>
-  );
-};
+          </li>
 
-export default Navbar;
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/cakes">Cakes</NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/contact">Contact</NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/aboutus">About Us</NavLink>
+          </li>
+        </ul>
+        
+        <div className="navbar-actions">
+          <Link to="/search" className="nav-icon">🔍</Link>
+          <Link to="/cart" className="nav-icon">🛒</Link>
+          {user ? (
+            <div className="user-dropdown">
+              <button className="user-dropdown-toggle">
+                Welcome, {user.firstName}!
+              </button>
+              <ul className="user-dropdown-menu"
+              onMouseEnter={() => setShowCategoriesDropdown(true)}
+              onMouseLeave={() => setShowCategoriesDropdown(false)}>
+                <li><Link to="/profile">Profile</Link></li>
+                <li><Link to="/passwordreset">Change password</Link></li>
+                <li><button onClick={handleLogout}>Logout</button></li>
+              </ul>
+            </div>
+          ) : (
+            <div className="auth-buttons">
+              <Link className="btn btn-outline-primary" to='/login'>Login</Link>
+              <Link className="btn btn-outline-success" to='/register'>Register</Link>
+            </div>
+          )}
+        </div>
+      </div>
+    </nav>
+  )
+}
+
+export default Navbar
